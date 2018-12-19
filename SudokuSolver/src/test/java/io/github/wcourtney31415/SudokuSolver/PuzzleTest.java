@@ -47,7 +47,12 @@ public class PuzzleTest {
 	public void testThrowsExceptionIfRowsTooBig() {
 		new Puzzle(new int[19][9]);
 	}
-
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void testThrowsExceptionIfRowsTooSmall() {
+		new Puzzle(new int[3][9]);
+	}
+	
 	@Test(expected = IllegalArgumentException.class)
 	public void testThrowsExceptionIfColumnsTooBig() {
 		new Puzzle(new int[9][19]);
