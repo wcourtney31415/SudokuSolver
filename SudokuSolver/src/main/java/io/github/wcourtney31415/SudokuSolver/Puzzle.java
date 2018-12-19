@@ -11,34 +11,49 @@ public class Puzzle {
 
 	private int[][] data;
 
-	public Puzzle(int[][] testData) {
-		if (testData.length > MAX_ROW_LENGTH) {
-			throw new IllegalArgumentException("Too many row elements.");
-		}
+	public Puzzle(int[][] grid) {
 
-		if (testData.length < MIN_ROW_LENGTH) {
-			throw new IllegalArgumentException("Not enough row elements.");
-		}
+		validateUnderMaxRowLength(grid);
+		validateAboveMinRowLength(grid);
+		validateUnderMaxColumnLength(grid);
+		validateAboveMinColumnLength(grid);
+		
 
-		if (testData[0].length > MAX_COLUMN_LENGTH) {
-			throw new IllegalArgumentException("Too many column elements.");
-		}
-		
-		if (testData[0].length < MIN_COLUMN_LENGTH) {
-			throw new IllegalArgumentException("Not enough row elements.");
-		}
-		
-		int rowLength = testData[0].length;
+		int rowLength = grid[0].length;
 		for (int i = 0; i < MAX_ROW_LENGTH; i++) {
-			if (rowLength != testData[i].length) {
+			if (rowLength != grid[i].length) {
 				throw new IllegalArgumentException("Inconsistant row lengths.");
 			}
 		}
 
-		data = new int[testData.length][];
-		for (int i = 0; i < testData.length; i++) {
-			int[] innerArray = testData[i];
+		data = new int[grid.length][];
+		for (int i = 0; i < grid.length; i++) {
+			int[] innerArray = grid[i];
 			data[i] = Arrays.copyOf(innerArray, innerArray.length);
+		}
+	}
+
+	private void validateAboveMinColumnLength(int[][] grid) {
+		if (grid[0].length < MIN_COLUMN_LENGTH) {
+			throw new IllegalArgumentException("Not enough row elements.");
+		}		
+	}
+
+	private void validateUnderMaxColumnLength(int[][] grid) {
+		if (grid[0].length > MAX_COLUMN_LENGTH) {
+			throw new IllegalArgumentException("Too many column elements.");
+		}
+	}
+
+	private void validateAboveMinRowLength(int[][] grid) {
+		if (grid.length < MIN_ROW_LENGTH) {
+			throw new IllegalArgumentException("Not enough row elements.");
+		}
+	}
+
+	private void validateUnderMaxRowLength(int[][] grid) {
+		if (grid.length > MAX_ROW_LENGTH) {
+			throw new IllegalArgumentException("Too many row elements.");
 		}
 	}
 
