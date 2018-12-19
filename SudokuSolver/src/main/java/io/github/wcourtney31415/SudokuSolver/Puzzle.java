@@ -12,14 +12,16 @@ public class Puzzle {
 	private int[][] data;
 
 	public Puzzle(int[][] grid) {
+		performConstructorParameterValidations(grid);
+		data = getCopyOf2dArray(grid);
+	}
 
+	private void performConstructorParameterValidations(int[][] grid) {
 		validateUnderMaxRowLength(grid);
 		validateAboveMinRowLength(grid);
 		validateUnderMaxColumnLength(grid);
 		validateAboveMinColumnLength(grid);
 		validateConsistantRowLengths(grid);
-		data = getCopyOf2dArray(grid);
-
 	}
 
 	private int[][] getCopyOf2dArray(int[][] grid) {
