@@ -25,7 +25,7 @@ public class Puzzle {
 	}
 
 	private int[][] getCopyOf2dArray(int[][] grid) {
-		// Gross Code to copy the values by value instead of by reference.
+		// Gross Code to return a copy of the array by value instead of by reference.
 		int[][] data = new int[grid.length][];
 		for (int i = 0; i < grid.length; i++) {
 			int[] innerArray = grid[i];
