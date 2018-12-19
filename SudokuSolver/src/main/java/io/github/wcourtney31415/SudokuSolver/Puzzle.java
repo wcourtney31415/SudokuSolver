@@ -17,26 +17,34 @@ public class Puzzle {
 		validateAboveMinRowLength(grid);
 		validateUnderMaxColumnLength(grid);
 		validateAboveMinColumnLength(grid);
-		
+		validateConsistantRowLengths(grid);
+		data = getCopyOf2dArray(grid);
 
+	}
+
+	private int[][] getCopyOf2dArray(int[][] grid) {
+		// Gross Code to copy the values by value instead of by reference.
+		int[][] data = new int[grid.length][];
+		for (int i = 0; i < grid.length; i++) {
+			int[] innerArray = grid[i];
+			data[i] = Arrays.copyOf(innerArray, innerArray.length);
+		}
+		return data;
+	}
+
+	private void validateConsistantRowLengths(int[][] grid) {
 		int rowLength = grid[0].length;
 		for (int i = 0; i < MAX_ROW_LENGTH; i++) {
 			if (rowLength != grid[i].length) {
 				throw new IllegalArgumentException("Inconsistant row lengths.");
 			}
 		}
-
-		data = new int[grid.length][];
-		for (int i = 0; i < grid.length; i++) {
-			int[] innerArray = grid[i];
-			data[i] = Arrays.copyOf(innerArray, innerArray.length);
-		}
 	}
 
 	private void validateAboveMinColumnLength(int[][] grid) {
 		if (grid[0].length < MIN_COLUMN_LENGTH) {
 			throw new IllegalArgumentException("Not enough row elements.");
-		}		
+		}
 	}
 
 	private void validateUnderMaxColumnLength(int[][] grid) {
