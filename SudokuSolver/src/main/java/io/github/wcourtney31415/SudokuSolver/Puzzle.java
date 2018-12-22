@@ -25,13 +25,13 @@ public class Puzzle {
 	}
 
 	private int[][] getCopyOf2dArray(int[][] grid) {
-		// Gross Code to return a copy of the array by value instead of by reference.
-		int[][] data = new int[grid.length][];
-		for (int i = 0; i < grid.length; i++) {
-			int[] innerArray = grid[i];
-			data[i] = Arrays.copyOf(innerArray, innerArray.length);
+		int numOfRows = grid.length;
+		int[][] myCoppiedArray = new int[numOfRows][];
+		for (int row = 0; row < numOfRows; row++) {
+			int[] rowContents = grid[row];
+			myCoppiedArray[row] = Arrays.copyOf(rowContents, rowContents.length);
 		}
-		return data;
+		return myCoppiedArray;
 	}
 
 	private void validateConsistantRowLengths(int[][] grid) {
