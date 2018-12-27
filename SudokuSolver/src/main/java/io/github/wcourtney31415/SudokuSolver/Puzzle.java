@@ -75,5 +75,17 @@ public class Puzzle {
 		}
 		return false;
 	}
+	
+	/**
+	 * Origin starts at (0, 0) 
+	 * 
+	 */
+	public int read(int x, int y) {
+		return data[y][x];
+	}
+
+	public void submitAnswer(int x, int y, int value) {
+		data[y][x] = value;
+	}
 
 }

@@ -64,7 +64,7 @@ public class PuzzleTest {
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testThrowsExceptionIfColumnsVaryInSize() {
+	public void testThrowsExceptionIfRowsVaryInSize() {
 		testData = new int[][] {
 				{ 7, 0, 0, 5, 0, 3, 0, 0, 0 },
 				{ 0, 0, 2, 0, 0, 9, 0, 0 },
@@ -77,6 +77,16 @@ public class PuzzleTest {
 				{ 0, 0, 0, 0, 3 }
 		};
 		new Puzzle(testData);
+	}
+	
+	@Test
+	public void testElementChanged() {
+		Puzzle puzzle = new Puzzle(testData);
+		int x = 3, y = 2;
+		int read = puzzle.read(x, y); 
+		puzzle.submitAnswer(x, y, 4);
+		Assert.assertNotEquals(read, puzzle.read(x, y));
+		
 	}
 
 }
