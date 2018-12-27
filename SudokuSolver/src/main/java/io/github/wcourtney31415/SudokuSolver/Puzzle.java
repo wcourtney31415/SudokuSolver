@@ -3,12 +3,10 @@ package io.github.wcourtney31415.SudokuSolver;
 import java.util.Arrays;
 
 public class Puzzle {
-
-	private static final int MAX_ROW_LENGTH = 9;
-	private static final int MIN_ROW_LENGTH = 9;
-	private static final int MAX_COLUMN_LENGTH = 9;
-	private static final int MIN_COLUMN_LENGTH = 9;
-
+	
+	
+	private static final int GRID_SIZE = 9;
+	
 	private int[][] data;
 
 	public Puzzle(int[][] grid) {
@@ -36,7 +34,7 @@ public class Puzzle {
 
 	private void validateConsistantRowLengths(int[][] grid) {
 		int rowLength = grid[0].length;
-		for (int i = 0; i < MAX_ROW_LENGTH; i++) {
+		for (int i = 0; i < GRID_SIZE; i++) {
 			if (rowLength != grid[i].length) {
 				throw new IllegalArgumentException("Inconsistant row lengths.");
 			}
@@ -44,25 +42,25 @@ public class Puzzle {
 	}
 
 	private void validateAboveMinColumnLength(int[][] grid) {
-		if (grid[0].length < MIN_COLUMN_LENGTH) {
+		if (grid[0].length < GRID_SIZE) {
 			throw new IllegalArgumentException("Not enough row elements.");
 		}
 	}
 
 	private void validateUnderMaxColumnLength(int[][] grid) {
-		if (grid[0].length > MAX_COLUMN_LENGTH) {
+		if (grid[0].length > GRID_SIZE) {
 			throw new IllegalArgumentException("Too many column elements.");
 		}
 	}
 
 	private void validateAboveMinRowLength(int[][] grid) {
-		if (grid.length < MIN_ROW_LENGTH) {
+		if (grid.length < GRID_SIZE) {
 			throw new IllegalArgumentException("Not enough row elements.");
 		}
 	}
 
 	private void validateUnderMaxRowLength(int[][] grid) {
-		if (grid.length > MAX_ROW_LENGTH) {
+		if (grid.length > GRID_SIZE) {
 			throw new IllegalArgumentException("Too many row elements.");
 		}
 	}
@@ -76,10 +74,30 @@ public class Puzzle {
 		return false;
 	}
 	
+	private void validateCoordinateIsPositive(int coordinate) {
+		if (coordinate < 0) {
+			throw new IllegalArgumentException("coordinate value must be positive.");
+		}
+	}
+	
+	private void validateCoordinateIsInScope(int coordinate) {
+		if (coordinate > GRID_SIZE) {
+			throw new IllegalArgumentException("Coordinate value is outside the bounds of the puzzle.");
+		}
+	}
+	
+	private void validateCoordinates(int x, int y) {
+		validateCoordinateIsPositive(x);
+		validateCoordinateIsPositive(y);
+		validateCoordinateIsInScope(x);
+		validateCoordinateIsInScope(y);
+	}
+	
 	/**
 	 * Origin starts at (0, 0) 
 	 */
 	public int read(int x, int y) {
+		validateCoordinates(x, y);
 		return data[y][x];
 	}
 

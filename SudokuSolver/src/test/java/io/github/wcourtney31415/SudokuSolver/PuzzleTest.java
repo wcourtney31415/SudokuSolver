@@ -93,7 +93,24 @@ public class PuzzleTest {
 		int read = puzzle.read(x, y); 
 		puzzle.submitAnswer(x, y, 4);
 		Assert.assertNotEquals(read, puzzle.read(x, y));
-		
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testThrowsExceptionIfXIsNegative() {
+		Puzzle puzzle = new Puzzle(testData);
+		puzzle.read(-1, 4);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testThrowsExceptionIfYIsNegative() {
+		Puzzle puzzle = new Puzzle(testData);
+		puzzle.read(4, -1);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testThrowsExceptionIfXIsLargerThanPuzzleWidth() {
+		Puzzle puzzle = new Puzzle(testData);
+		puzzle.read(13, 4);
 	}
 	
 }
