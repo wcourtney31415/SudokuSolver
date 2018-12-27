@@ -96,21 +96,33 @@ public class PuzzleTest {
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testThrowsExceptionIfXIsNegative() {
+	public void testThrowsExceptionIfReadMethodXIsNegative() {
 		Puzzle puzzle = new Puzzle(testData);
 		puzzle.read(-1, 4);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testThrowsExceptionIfYIsNegative() {
+	public void testThrowsExceptionIfSubmitAnswerMethodXIsNegative() {
+		Puzzle puzzle = new Puzzle(testData);
+		puzzle.submitAnswer(-1, 4, 5);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testThrowsExceptionIfReadMethodYIsNegative() {
 		Puzzle puzzle = new Puzzle(testData);
 		puzzle.read(4, -1);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
+	public void testThrowsExceptionIfSubmitAnswerMethodYIsNegative() {
+		Puzzle puzzle = new Puzzle(testData);
+		puzzle.submitAnswer(4, -1, 5);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
 	public void testThrowsExceptionIfXIsLargerThanPuzzleWidth() {
 		Puzzle puzzle = new Puzzle(testData);
-		puzzle.read(13, 4);
+		puzzle.read(9, 4);
 	}
 	
 }

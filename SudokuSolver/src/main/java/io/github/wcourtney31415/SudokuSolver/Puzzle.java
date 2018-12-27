@@ -76,12 +76,12 @@ public class Puzzle {
 	
 	private void validateCoordinateIsPositive(int coordinate) {
 		if (coordinate < 0) {
-			throw new IllegalArgumentException("coordinate value must be positive.");
+			throw new IllegalArgumentException("Coordinate value must be positive.");
 		}
 	}
 	
 	private void validateCoordinateIsInScope(int coordinate) {
-		if (coordinate > GRID_SIZE) {
+		if (coordinate > GRID_SIZE - 1) {
 			throw new IllegalArgumentException("Coordinate value is outside the bounds of the puzzle.");
 		}
 	}
@@ -102,6 +102,7 @@ public class Puzzle {
 	}
 
 	public void submitAnswer(int x, int y, int value) {
+		validateCoordinates(x, y);
 		data[y][x] = value;
 	}
 
