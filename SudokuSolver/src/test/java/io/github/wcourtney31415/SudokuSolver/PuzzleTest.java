@@ -80,7 +80,14 @@ public class PuzzleTest {
 	}
 	
 	@Test
-	public void testElementChanged() {
+	public void testReadElement() {
+		Puzzle puzzle = new Puzzle(testData);
+		int read = puzzle.read(4,2);
+		Assert.assertEquals(read, 6);
+	}
+	
+	@Test
+	public void testSubmitAnswer() {
 		Puzzle puzzle = new Puzzle(testData);
 		int x = 3, y = 2;
 		int read = puzzle.read(x, y); 
@@ -88,5 +95,5 @@ public class PuzzleTest {
 		Assert.assertNotEquals(read, puzzle.read(x, y));
 		
 	}
-
+	
 }

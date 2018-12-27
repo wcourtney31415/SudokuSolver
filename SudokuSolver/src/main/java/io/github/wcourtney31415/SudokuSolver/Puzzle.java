@@ -78,7 +78,6 @@ public class Puzzle {
 	
 	/**
 	 * Origin starts at (0, 0) 
-	 * 
 	 */
 	public int read(int x, int y) {
 		return data[y][x];
