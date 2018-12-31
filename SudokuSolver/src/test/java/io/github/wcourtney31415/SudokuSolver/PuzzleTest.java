@@ -46,7 +46,25 @@ public class PuzzleTest {
 		Puzzle otherPuzzle = new Puzzle(testData);
 		Assert.assertFalse(puzzle.equals(otherPuzzle));
 	}
-
+	
+	@Test
+	public void testHashCodeIdentityEquals() {
+		Assert.assertEquals(puzzle.hashCode(), puzzle.hashCode());
+	}
+	
+	@Test
+	public void testHashCodeSameDataEquals() {
+		Puzzle otherPuzzle = new Puzzle(testData);
+		Assert.assertEquals(puzzle.hashCode(), otherPuzzle.hashCode());
+	}
+	
+	@Test
+	public void testHashCodeMutateDataNotEquals() {
+		testData[0][0] = 8;
+		Puzzle otherPuzzle = new Puzzle(testData);
+		Assert.assertNotEquals(puzzle.hashCode(), otherPuzzle.hashCode());
+	}
+	
 	@Test(expected = IllegalArgumentException.class)
 	public void testThrowsExceptionIfRowsTooBig() {
 		new Puzzle(new int[19][9]);
@@ -121,5 +139,5 @@ public class PuzzleTest {
 	public void testThrowsExceptionIfXIsLargerThanPuzzleWidth() {
 		puzzle.read(9, 4);
 	}
-
+	
 }
