@@ -28,7 +28,12 @@ public class PuzzleTest {
 	public void testIdentityEquals() {
 		Assert.assertTrue(puzzle.equals(puzzle));
 	}
-
+	
+	@Test
+	public void testNotEqualToNull() {
+		Assert.assertFalse(puzzle.equals(null));
+	}
+	
 	@Test
 	public void testSameDataEquals() {
 		Puzzle otherPuzzle = new Puzzle(testData);
