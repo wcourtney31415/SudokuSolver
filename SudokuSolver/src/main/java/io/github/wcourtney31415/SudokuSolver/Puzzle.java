@@ -23,12 +23,12 @@ public class Puzzle {
 
 	private int[][] getCopyOf2dArray(int[][] grid) {
 		int numOfRows = grid.length;
-		int[][] myCoppiedArray = new int[numOfRows][];
+		int[][] copiedArray = new int[numOfRows][];
 		for (int row = 0; row < numOfRows; row++) {
 			int[] rowContents = grid[row];
-			myCoppiedArray[row] = Arrays.copyOf(rowContents, rowContents.length);
+			copiedArray[row] = Arrays.copyOf(rowContents, rowContents.length);
 		}
-		return myCoppiedArray;
+		return copiedArray;
 	}
 
 	private void validateConsistantRowLengths(int[][] grid) {
