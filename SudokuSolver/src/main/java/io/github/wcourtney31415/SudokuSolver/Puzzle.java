@@ -3,10 +3,9 @@ package io.github.wcourtney31415.SudokuSolver;
 import java.util.Arrays;
 
 public class Puzzle {
-	
-	
+
 	private static final int GRID_SIZE = 9;
-	
+
 	private int[][] data;
 
 	public Puzzle(int[][] grid) {
@@ -73,28 +72,33 @@ public class Puzzle {
 		}
 		return false;
 	}
-	
+
+	@Override
+	public int hashCode() {
+		return Arrays.deepHashCode(data);
+	}
+
 	private void validateCoordinateIsPositive(int coordinate) {
 		if (coordinate < 0) {
 			throw new IllegalArgumentException("Coordinate value must be positive.");
 		}
 	}
-	
+
 	private void validateCoordinateIsInScope(int coordinate) {
 		if (coordinate > GRID_SIZE - 1) {
 			throw new IllegalArgumentException("Coordinate value is outside the bounds of the puzzle.");
 		}
 	}
-	
+
 	private void validateCoordinates(int x, int y) {
 		validateCoordinateIsPositive(x);
 		validateCoordinateIsPositive(y);
 		validateCoordinateIsInScope(x);
 		validateCoordinateIsInScope(y);
 	}
-	
+
 	/**
-	 * Origin starts at (0, 0) 
+	 * Origin starts at (0, 0)
 	 */
 	public int read(int x, int y) {
 		validateCoordinates(x, y);
