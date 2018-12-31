@@ -67,7 +67,7 @@ public class Puzzle {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj.getClass().equals(getClass())) {
+		if (obj instanceof Puzzle) {
 			Puzzle other = (Puzzle) obj;
 			return Arrays.deepEquals(data, other.data);
 		}
