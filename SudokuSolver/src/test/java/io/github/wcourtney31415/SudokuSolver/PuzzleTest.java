@@ -151,7 +151,7 @@ public class PuzzleTest {
 	@Test
 	public void testReadRowIsProperSize() {
 		List<Integer> row = puzzle.readRow(2);
-		Assert.assertEquals(Puzzle.GRID_SIZE, row.size());
+		Assert.assertEquals(Puzzle.PUZZLE_SIZE, row.size());
 	}
 
 	@Test
@@ -163,7 +163,7 @@ public class PuzzleTest {
 	@Test
 	public void testReadColumnIsProperSize() {
 		List<Integer> column = puzzle.readColumn(2);
-		Assert.assertEquals(Puzzle.GRID_SIZE, column.size());
+		Assert.assertEquals(Puzzle.PUZZLE_SIZE, column.size());
 	}
 
 }

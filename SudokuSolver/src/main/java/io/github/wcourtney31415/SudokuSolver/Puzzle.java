@@ -6,62 +6,62 @@ import java.util.List;
 
 public class Puzzle {
 
-	protected static final int GRID_SIZE = 9;
+	protected static final int PUZZLE_SIZE = 9;
 
 	private int[][] data;
 
-	public Puzzle(int[][] grid) {
-		performConstructorParameterValidations(grid);
-		data = getCopyOf2dArray(grid);
+	public Puzzle(int[][] data) {
+		performConstructorParameterValidations(data);
+		this.data = getCopyOf2dArray(data);
 	}
 
-	private void performConstructorParameterValidations(int[][] grid) {
-		validateUnderMaxRowLength(grid);
-		validateAboveMinRowLength(grid);
-		validateUnderMaxColumnLength(grid);
-		validateAboveMinColumnLength(grid);
-		validateConsistantRowLengths(grid);
+	private void performConstructorParameterValidations(int[][] data) {
+		validateUnderMaxRowLength(data);
+		validateAboveMinRowLength(data);
+		validateUnderMaxColumnLength(data);
+		validateAboveMinColumnLength(data);
+		validateConsistantRowLengths(data);
 	}
 
-	private int[][] getCopyOf2dArray(int[][] grid) {
-		int numOfRows = grid.length;
-		int[][] copiedArray = new int[numOfRows][];
+	private int[][] getCopyOf2dArray(int[][] data) {
+		int numOfRows = data.length;
+		int[][] arrayCopy = new int[numOfRows][];
 		for (int row = 0; row < numOfRows; row++) {
-			int[] rowContents = grid[row];
-			copiedArray[row] = Arrays.copyOf(rowContents, rowContents.length);
+			int[] rowContents = data[row];
+			arrayCopy[row] = Arrays.copyOf(rowContents, rowContents.length);
 		}
-		return copiedArray;
+		return arrayCopy;
 	}
 
-	private void validateConsistantRowLengths(int[][] grid) {
-		int rowLength = grid[0].length;
-		for (int i = 0; i < GRID_SIZE; i++) {
-			if (rowLength != grid[i].length) {
+	private void validateConsistantRowLengths(int[][] data) {
+		int rowLength = data[0].length;
+		for (int i = 0; i < PUZZLE_SIZE; i++) {
+			if (rowLength != data[i].length) {
 				throw new IllegalArgumentException("Inconsistant row lengths.");
 			}
 		}
 	}
 
-	private void validateAboveMinColumnLength(int[][] grid) {
-		if (grid[0].length < GRID_SIZE) {
+	private void validateAboveMinColumnLength(int[][] data) {
+		if (data[0].length < PUZZLE_SIZE) {
 			throw new IllegalArgumentException("Not enough row elements.");
 		}
 	}
 
-	private void validateUnderMaxColumnLength(int[][] grid) {
-		if (grid[0].length > GRID_SIZE) {
+	private void validateUnderMaxColumnLength(int[][] data) {
+		if (data[0].length > PUZZLE_SIZE) {
 			throw new IllegalArgumentException("Too many column elements.");
 		}
 	}
 
-	private void validateAboveMinRowLength(int[][] grid) {
-		if (grid.length < GRID_SIZE) {
+	private void validateAboveMinRowLength(int[][] data) {
+		if (data.length < PUZZLE_SIZE) {
 			throw new IllegalArgumentException("Not enough row elements.");
 		}
 	}
 
-	private void validateUnderMaxRowLength(int[][] grid) {
-		if (grid.length > GRID_SIZE) {
+	private void validateUnderMaxRowLength(int[][] data) {
+		if (data.length > PUZZLE_SIZE) {
 			throw new IllegalArgumentException("Too many row elements.");
 		}
 	}
@@ -87,7 +87,7 @@ public class Puzzle {
 	}
 
 	private void validateCoordinateIsInScope(int coordinate) {
-		if (coordinate > GRID_SIZE - 1) {
+		if (coordinate > PUZZLE_SIZE - 1) {
 			throw new IllegalArgumentException("Coordinate value is outside the bounds of the puzzle.");
 		}
 	}
@@ -126,7 +126,7 @@ public class Puzzle {
 		validateCoordinateIsPositive(x);
 		validateCoordinateIsInScope(x);
 		List<Integer> column = new ArrayList<>();
-		for (int y = 0; y < GRID_SIZE; y++) {
+		for (int y = 0; y < PUZZLE_SIZE; y++) {
 			int cell = read(x, y);
 			column.add(Integer.valueOf(cell));
 		}
