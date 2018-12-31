@@ -1,5 +1,7 @@
 package io.github.wcourtney31415.SudokuSolver;
 
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -138,6 +140,18 @@ public class PuzzleTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void testThrowsExceptionIfXIsLargerThanPuzzleWidth() {
 		puzzle.read(9, 4);
+	}
+	
+	@Test
+	public void testReadRowNotNull() {
+		List<Integer> list = puzzle.readRow(0);
+		Assert.assertNotNull(list);
+	}
+	
+	@Test
+	public void testReadRowIsProperSize() {
+		List<Integer> row = puzzle.readRow(2);
+		Assert.assertEquals(Puzzle.GRID_SIZE, row.size());
 	}
 	
 }

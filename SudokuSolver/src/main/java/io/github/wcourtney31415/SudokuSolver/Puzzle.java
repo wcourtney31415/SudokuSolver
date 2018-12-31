@@ -1,10 +1,12 @@
 package io.github.wcourtney31415.SudokuSolver;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Puzzle {
 
-	private static final int GRID_SIZE = 9;
+	protected static final int GRID_SIZE = 9;
 
 	private int[][] data;
 
@@ -108,6 +110,14 @@ public class Puzzle {
 	public void submitAnswer(int x, int y, int value) {
 		validateCoordinates(x, y);
 		data[y][x] = value;
+	}
+
+	public List<Integer> readRow(int y) {
+		List<Integer> row = new ArrayList<>();
+		for (int i : data[y]) {
+			row.add(Integer.valueOf(i));
+		}
+		return row;
 	}
 
 }
