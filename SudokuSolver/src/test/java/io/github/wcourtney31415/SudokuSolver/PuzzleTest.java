@@ -30,12 +30,12 @@ public class PuzzleTest {
 	public void testIdentityEquals() {
 		Assert.assertTrue(puzzle.equals(puzzle));
 	}
-	
+
 	@Test
 	public void testNotEqualToNull() {
 		Assert.assertFalse(puzzle.equals(null));
 	}
-	
+
 	@Test
 	public void testSameDataEquals() {
 		Puzzle otherPuzzle = new Puzzle(testData);
@@ -48,25 +48,25 @@ public class PuzzleTest {
 		Puzzle otherPuzzle = new Puzzle(testData);
 		Assert.assertFalse(puzzle.equals(otherPuzzle));
 	}
-	
+
 	@Test
 	public void testHashCodeIdentityEquals() {
 		Assert.assertEquals(puzzle.hashCode(), puzzle.hashCode());
 	}
-	
+
 	@Test
 	public void testHashCodeSameDataEquals() {
 		Puzzle otherPuzzle = new Puzzle(testData);
 		Assert.assertEquals(puzzle.hashCode(), otherPuzzle.hashCode());
 	}
-	
+
 	@Test
 	public void testHashCodeMutateDataNotEquals() {
 		testData[0][0] = 8;
 		Puzzle otherPuzzle = new Puzzle(testData);
 		Assert.assertNotEquals(puzzle.hashCode(), otherPuzzle.hashCode());
 	}
-	
+
 	@Test(expected = IllegalArgumentException.class)
 	public void testThrowsExceptionIfRowsTooBig() {
 		new Puzzle(new int[19][9]);
@@ -141,17 +141,29 @@ public class PuzzleTest {
 	public void testThrowsExceptionIfXIsLargerThanPuzzleWidth() {
 		puzzle.read(9, 4);
 	}
-	
+
 	@Test
 	public void testReadRowNotNull() {
 		List<Integer> list = puzzle.readRow(0);
 		Assert.assertNotNull(list);
 	}
-	
+
 	@Test
 	public void testReadRowIsProperSize() {
 		List<Integer> row = puzzle.readRow(2);
 		Assert.assertEquals(Puzzle.GRID_SIZE, row.size());
 	}
-	
+
+	@Test
+	public void testReadColumnNotNull() {
+		List<Integer> list = puzzle.readColumn(1);
+		Assert.assertNotNull(list);
+	}
+
+	@Test
+	public void testReadColumnIsProperSize() {
+		List<Integer> column = puzzle.readColumn(2);
+		Assert.assertEquals(Puzzle.GRID_SIZE, column.size());
+	}
+
 }

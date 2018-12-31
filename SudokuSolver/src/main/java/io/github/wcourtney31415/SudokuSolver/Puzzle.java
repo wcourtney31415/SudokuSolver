@@ -113,11 +113,24 @@ public class Puzzle {
 	}
 
 	public List<Integer> readRow(int y) {
+		validateCoordinateIsPositive(y);
+		validateCoordinateIsInScope(y);
 		List<Integer> row = new ArrayList<>();
 		for (int i : data[y]) {
 			row.add(Integer.valueOf(i));
 		}
 		return row;
+	}
+
+	public List<Integer> readColumn(int x) {
+		validateCoordinateIsPositive(x);
+		validateCoordinateIsInScope(x);
+		List<Integer> column = new ArrayList<>();
+		for (int y = 0; y < GRID_SIZE; y++) {
+			int cell = read(x, y);
+			column.add(Integer.valueOf(cell));
+		}
+		return column;
 	}
 
 }
