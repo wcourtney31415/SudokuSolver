@@ -2,7 +2,7 @@ package io.github.wcourtney31415.SudokuSolver;
 
 public class App {
 
-	static int[][] puzzle = {
+	static int[][] data = {
 			{ 7, 0, 0, 5, 0, 3, 0, 0, 0 },
 			{ 0, 0, 2, 0, 7, 0, 9, 0, 0 },
 			{ 0, 0, 0, 0, 6, 4, 7, 0, 0 },
@@ -15,7 +15,7 @@ public class App {
 	};
 
 	public static void main(String[] args) {
-
+		
 	}
 
 }
