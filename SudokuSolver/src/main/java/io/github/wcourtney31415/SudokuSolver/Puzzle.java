@@ -15,4 +15,5 @@ public interface Puzzle {
 	List<Integer> readRow(int y);
 
 	List<Integer> readColumn(int x);
+
 }

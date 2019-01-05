@@ -1,9 +1,7 @@
 package io.github.wcourtney31415.SudokuSolver;
 
-public class PuzzleSolver {
+public interface PuzzleSolver {
 
-	public PuzzleSolver(Puzzle puzzle) {
-		
-	}
+	Puzzle solve(Puzzle puzzle);
 
 }
