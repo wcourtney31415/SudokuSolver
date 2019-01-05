@@ -23,7 +23,7 @@ public class PuzzleTest {
 				{ 0, 0, 6, 0, 4, 0, 1, 0, 0 },
 				{ 0, 0, 0, 6, 0, 7, 0, 0, 3 }
 		};
-		puzzle = new Puzzle(testData);
+		puzzle = new ArrayPuzzle(testData);
 	}
 
 	@Test
@@ -38,14 +38,14 @@ public class PuzzleTest {
 
 	@Test
 	public void testSameDataEquals() {
-		Puzzle otherPuzzle = new Puzzle(testData);
+		ArrayPuzzle otherPuzzle = new ArrayPuzzle(testData);
 		Assert.assertTrue(puzzle.equals(otherPuzzle));
 	}
 
 	@Test
 	public void testMutateDataNotEquals() {
 		testData[0][0] = 8;
-		Puzzle otherPuzzle = new Puzzle(testData);
+		ArrayPuzzle otherPuzzle = new ArrayPuzzle(testData);
 		Assert.assertFalse(puzzle.equals(otherPuzzle));
 	}
 
@@ -56,35 +56,35 @@ public class PuzzleTest {
 
 	@Test
 	public void testHashCodeSameDataEquals() {
-		Puzzle otherPuzzle = new Puzzle(testData);
+		ArrayPuzzle otherPuzzle = new ArrayPuzzle(testData);
 		Assert.assertEquals(puzzle.hashCode(), otherPuzzle.hashCode());
 	}
 
 	@Test
 	public void testHashCodeMutateDataNotEquals() {
 		testData[0][0] = 8;
-		Puzzle otherPuzzle = new Puzzle(testData);
+		ArrayPuzzle otherPuzzle = new ArrayPuzzle(testData);
 		Assert.assertNotEquals(puzzle.hashCode(), otherPuzzle.hashCode());
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testThrowsExceptionIfRowsTooBig() {
-		new Puzzle(new int[19][9]);
+		new ArrayPuzzle(new int[19][9]);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testThrowsExceptionIfRowsTooSmall() {
-		new Puzzle(new int[3][9]);
+		new ArrayPuzzle(new int[3][9]);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testThrowsExceptionIfColumnsTooBig() {
-		new Puzzle(new int[9][19]);
+		new ArrayPuzzle(new int[9][19]);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testThrowsExceptionIfColumnsTooSmall() {
-		new Puzzle(new int[9][3]);
+		new ArrayPuzzle(new int[9][3]);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -100,7 +100,7 @@ public class PuzzleTest {
 				{ 0, 0, 6, 0, 4, 0, 1, 0, 0 },
 				{ 0, 0, 0, 0, 3 }
 		};
-		new Puzzle(testData);
+		new ArrayPuzzle(testData);
 	}
 
 	@Test

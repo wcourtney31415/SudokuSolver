@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class PuzzleSolverTest {
 	private int[][] testData;
-	private Puzzle puzzle;
+	private ArrayPuzzle puzzle;
 	private PuzzleSolver puzzleSolver;
 
 	@Before
@@ -22,7 +22,7 @@ public class PuzzleSolverTest {
 				{ 0, 0, 6, 0, 4, 0, 1, 0, 0 },
 				{ 0, 0, 0, 6, 0, 7, 0, 0, 3 }
 		};
-		puzzle = new Puzzle(testData);
+		puzzle = new ArrayPuzzle(testData);
 		puzzleSolver = new PuzzleSolver(puzzle);
 	}
 
