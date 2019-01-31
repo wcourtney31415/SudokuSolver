@@ -13,23 +13,7 @@ public class ArrayPuzzle implements Puzzle {
 		this.data = getCopyOf2dArray(data);
 	}
 
-	private void performConstructorParameterValidations(int[][] data) {
-		validateUnderMaxRowLength(data);
-		validateAboveMinRowLength(data);
-		validateUnderMaxColumnLength(data);
-		validateAboveMinColumnLength(data);
-		validateConsistantRowLengths(data);
-	}
-
-	private int[][] getCopyOf2dArray(int[][] data) {
-		int numOfRows = data.length;
-		int[][] arrayCopy = new int[numOfRows][];
-		for (int row = 0; row < numOfRows; row++) {
-			int[] rowContents = data[row];
-			arrayCopy[row] = Arrays.copyOf(rowContents, rowContents.length);
-		}
-		return arrayCopy;
-	}
+	// Begin: Constructor Parameter Validations
 
 	private void validateConsistantRowLengths(int[][] data) {
 		int rowLength = data[0].length;
@@ -64,6 +48,26 @@ public class ArrayPuzzle implements Puzzle {
 		}
 	}
 
+	private void performConstructorParameterValidations(int[][] data) {
+		validateUnderMaxRowLength(data);
+		validateAboveMinRowLength(data);
+		validateUnderMaxColumnLength(data);
+		validateAboveMinColumnLength(data);
+		validateConsistantRowLengths(data);
+	}
+
+	// End: Constructor Parameter Validations
+
+	private int[][] getCopyOf2dArray(int[][] data) {
+		int numOfRows = data.length;
+		int[][] arrayCopy = new int[numOfRows][];
+		for (int row = 0; row < numOfRows; row++) {
+			int[] rowContents = data[row];
+			arrayCopy[row] = Arrays.copyOf(rowContents, rowContents.length);
+		}
+		return arrayCopy;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (obj instanceof ArrayPuzzle) {
@@ -78,6 +82,7 @@ public class ArrayPuzzle implements Puzzle {
 		return Arrays.deepHashCode(data);
 	}
 
+	// Begin: Validate Coordinates
 	private void validateCoordinateIsPositive(int coordinate) {
 		if (coordinate < 0) {
 			throw new IllegalArgumentException("Coordinate value must be positive.");
@@ -96,6 +101,8 @@ public class ArrayPuzzle implements Puzzle {
 		validateCoordinateIsInScope(x);
 		validateCoordinateIsInScope(y);
 	}
+
+	// End: Validate Coordinates
 
 	@Override
 	public int read(int x, int y) {
@@ -119,7 +126,7 @@ public class ArrayPuzzle implements Puzzle {
 		}
 		return row;
 	}
-	
+
 	@Override
 	public List<Integer> readColumn(int x) {
 		validateCoordinateIsPositive(x);
