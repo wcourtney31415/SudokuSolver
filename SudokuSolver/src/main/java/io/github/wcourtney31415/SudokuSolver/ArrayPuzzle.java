@@ -29,7 +29,7 @@ public class ArrayPuzzle implements Puzzle {
 			throw new IllegalArgumentException("Not enough row elements.");
 		}
 	}
-
+ 
 	private void validateUnderMaxColumnLength(int[][] data) {
 		if (data[0].length > PUZZLE_SIZE) {
 			throw new IllegalArgumentException("Too many column elements.");
