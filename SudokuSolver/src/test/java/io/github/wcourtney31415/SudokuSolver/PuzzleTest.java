@@ -68,45 +68,8 @@ public class PuzzleTest {
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void testThrowsExceptionIfRowsTooBig() {
+	public void testValidationBeingRan() {
 		new ArrayPuzzle(new int[19][9]);
-	}
-
-	@Test(expected = IllegalArgumentException.class)
-	public void testThrowsExceptionIfRowsTooSmall() {
-		new ArrayPuzzle(new int[3][9]);
-	}
-
-	@Test(expected = IllegalArgumentException.class)
-	public void testThrowsExceptionIfColumnsTooBig() {
-		new ArrayPuzzle(new int[9][19]);
-	}
-
-	@Test(expected = IllegalArgumentException.class)
-	public void testThrowsExceptionIfColumnsTooSmall() {
-		new ArrayPuzzle(new int[9][3]);
-	}
-
-	@Test(expected = IllegalArgumentException.class)
-	public void testThrowsExceptionIfRowsVaryInSize() {
-		testData = new int[][] {
-				{ 7, 0, 0, 5, 0, 3, 0, 0, 0 },
-				{ 0, 0, 2, 0, 0, 9, 0, 0 },
-				{ 0, 0, 0, 0, 6, 4, 7, 0, 0 },
-				{ 8, 0, 4, 0, 0, 6, 5, 0, 2 },
-				{ 5, 0, 0, 0, 0, 0, 0, 0, 4 },
-				{ 3, 0, 9, 0, 8, 0, 1 },
-				{ 0, 0, 5, 2, 1, 0, 0, 0, 0 },
-				{ 0, 0, 6, 0, 4, 0, 1, 0, 0 },
-				{ 0, 0, 0, 0, 3 }
-		};
-		new ArrayPuzzle(testData);
-	}
-
-	@Test
-	public void testReadElement() {
-		int read = puzzle.read(4, 2);
-		Assert.assertEquals(read, 6);
 	}
 
 	@Test
@@ -118,23 +81,29 @@ public class PuzzleTest {
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void testThrowsExceptionIfReadMethodXIsNegative() {
-		puzzle.read(-1, 4);
-	}
-
-	@Test(expected = IllegalArgumentException.class)
 	public void testThrowsExceptionIfSubmitAnswerMethodXIsNegative() {
 		puzzle.submitAnswer(-1, 4, 5);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void testThrowsExceptionIfReadMethodYIsNegative() {
-		puzzle.read(4, -1);
+	public void testThrowsExceptionIfSubmitAnswerMethodYIsNegative() {
+		puzzle.submitAnswer(4, -1, 5);
+	}
+
+	@Test
+	public void testReadElement() {
+		int read = puzzle.read(4, 2);
+		Assert.assertEquals(read, 6);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void testThrowsExceptionIfSubmitAnswerMethodYIsNegative() {
-		puzzle.submitAnswer(4, -1, 5);
+	public void testThrowsExceptionIfReadMethodXIsNegative() {
+		puzzle.read(-1, 4);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testThrowsExceptionIfReadMethodYIsNegative() {
+		puzzle.read(4, -1);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
